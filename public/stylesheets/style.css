@@ -1,0 +1,43 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+
+
+a,
+a:hover {
+  color: inherit; 
+  text-decoration: inherit; 
+}
+
+.categories,
+.offerings{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.category{
+  width: 300px;
+  height:300px;
+  margin: 20px;
+  background: rgba(173, 216, 230, 1);
+  padding: 20px;
+  text-align: center;
+}
+
+.category:hover{
+  background: rgba(173, 216, 230, 0.7);
+}
+
+.name{
+  font-size: 30px;
+}
+
+.offering{
+  margin: 20px;
+  padding: 20px;
+  background: rgba(173, 216, 230, 1);
+}
