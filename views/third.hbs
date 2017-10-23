@@ -15,17 +15,21 @@
             {{#each offerings}}
             <div class="offering">
                 <h2>{{this.name}}</h2>
-                <h3>{{this.institution}}</h3>
+                <a href='{{this.website}}'><h3>{{this.institution}}</h3></a>
                 <p>{{this.description}}</p>
-                <p>{{this.website}}</p>
-                <p>{{this.address}}</p>
-                <p>{{this.contactPerson}}</p>
-                <p>{{this.contactPersonEmailAddress}}</p>
-                <p>{{this.contactPersonPhoneNumber}}</p>
-                <p>{{this.openingHours}}</p>
+                <hr>
+                <div class='contact'>
+                  <p>{{this.address}}</p>
+                  <p>{{this.contactPerson}}</p>
+                  <a href='mailto:{{this.contactPersonEmailAddress}}'><i class="fa fa-envelope" aria-hidden="true"></i>{{this.contactPersonEmailAddress}}</a><br>
+                  <a href='tel:{{this.contactPersonPhoneNumber}}'><i class="fa fa-phone" aria-hidden="true"></i>{{this.contactPersonPhoneNumber}}</a><br>
+                  <p>{{{this.openingHours}}}</p>
+                </div>
+                <hr class='end'>
              </div>
          {{/each}}
     </div>
+
 
 
 

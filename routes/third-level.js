@@ -28,7 +28,7 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
         secondCategories: offering.fields.secondCategory,
         institution: offering.fields.institution,
         description: offering.fields.description,
-        openingHours: offering.fields.openingHours,
+        openingHours: offering.fields.openingHours.replace(";", "<br>"),
         contactPersonPhoneNumber: offering.fields.contactPersonPhoneNumber,
         contactPersonEmailAddress: offering.fields.contactPersonEmailAddress,
         website: offering.fields.website,
