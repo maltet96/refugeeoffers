@@ -1,0 +1,8 @@
+ <div class="languages">
+      {{#each languages}}
+        <a href='?lang={{this.code}}'>
+          <p class='language'>{{this.short}}</p>
+       </a>
+      {{/each}}
+    </div> 
+    <a href="/?lang={{chosenLang}}" class="maintitle"> <h1 >{{frontPage.title}}</h1></a>

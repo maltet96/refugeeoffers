@@ -2,7 +2,9 @@ var express = require('express');
 var router = express.Router();
 const contentful = require('contentful')
 
-// contentful setuo
+
+
+// contentful setup
 
 const SPACE_ID = 'tjuqohmohv21'
 const ACCESS_TOKEN = 'e3070ba893e6549dfd7a4228bb8d2293da869a54c0285bd0b83d1b3f92570b70'
@@ -18,20 +20,72 @@ router.get('/', function(req, res, next) {
   
   // get all first level categories
   client.getEntries({
-    'content_type': 'firstCategory'
+    'locale': req.query.lang
   })
   .then(function (entries) {
+  
+    // filter only first categories out of all entries fetched
+    entriesFilteredForCategory = entries.items.filter(function(entry){
+        return entry.sys.contentType.sys.id == 'firstCategory'
+    })
 
-    let categories = entries.items.map((category) => {
+
+    let categories = entriesFilteredForCategory.map((category) => {
       return {
         name: category.fields.title,
-        icon: category.fields.icon
+        icon: category.fields.icon,
+        id: category.sys.id
       }
     })
 
-    console.log(categories);
+    // filter the front page elements out of all entries fetched
+    entriesFilteredForFrontPage = entries.items.filter(function(entry){
+      return entry.sys.contentType.sys.id == 'frontPage'
+  })
+  
+  let frontPage = entriesFilteredForFrontPage.map((element) => {
+    return {
+      title: element.fields.title,
+      description: element.fields.description
+    }
+  })[0]
 
-    res.render('first', { categories: categories });
+
+  // filter the lnguages out of all entries fetched
+  entriesFilteredForLanguages = entries.items.filter(function(entry){
+      return entry.sys.contentType.sys.id == 'language'
+  })
+  
+  // filter the langauges out of all entries fetched
+  let languages = entriesFilteredForLanguages.map((language) => {
+    
+    return {
+      name: language.fields.name,
+      short: language.fields.shortForm,
+      code: language.fields.languageCode
+    }
+  })
+
+      // filter only imprint out of all entries fetched
+      entriesFilteredForImprint = entries.items.filter(function(entry){
+        return entry.sys.contentType.sys.id == 'imprint'
+    })
+
+    let imprint = entriesFilteredForImprint.map((imprint) => {
+      return {
+        content: imprint.fields.content,
+        title: imprint.fields.titlte
+      }
+    })[0]
+
+
+    res.render('first', { 
+      imprint: imprint,
+      categories: categories,
+      frontPage: frontPage,
+      languages: languages,
+      chosenLang: req.query["lang"]
+    });
   })
 });
 

@@ -18,10 +18,16 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
   
   // get all first level categories
   client.getEntries({
-    'content_type': 'offering'
+    'locale': req.query["lang"]
   })
   .then(function (entries) {
-    let allOfferings = entries.items.map((offering) => {
+
+       // filter the offerings  out of all entries fetched
+      let entriesFilteredForCategories = entries.items.filter(function(entry){
+        return entry.sys.contentType.sys.id == 'offering'
+       })
+    
+    let allOfferings = entriesFilteredForCategories.map((offering) => {
       return {
         name: offering.fields.title,
         firstCategories: offering.fields.firstcategory,
@@ -38,17 +44,63 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
     })
 
     let offerings = allOfferings.filter(function(offering){
+
+      console.log(offering.firstCategories);
         
         // currently only one category is returned each -- this needs to be changed in the model to be an array and then mapped as in the secondlevel
-        let validFirstCategories = offering.firstCategories.fields.title;
-        let validSecondCategories = offering.secondCategories.fields.title;
+        let validFirstCategories = offering.firstCategories.sys.id;
+        let validSecondCategories = offering.secondCategories.sys.id;
         return validFirstCategories == req.params["firstCategory"] && validSecondCategories == req.params["secondCategory"];
     })
 
-    console.log(offerings);
+
+    // filter the langages out of all entries fetched
+    entriesFilteredForLanguages = entries.items.filter(function(entry){
+      return entry.sys.contentType.sys.id == 'language'
+    })
 
 
-    res.render('third', { offerings: offerings });
+    // filter the langauges out of all entries fetched
+    let languages = entriesFilteredForLanguages.map((language) => {
+
+      return {
+        name: language.fields.name,
+        short: language.fields.shortForm,
+        code: language.fields.languageCode
+      }
+    })
+
+     // filter the front page elements out of all entries fetched
+     entriesFilteredForFrontPage = entries.items.filter(function(entry){
+      return entry.sys.contentType.sys.id == 'frontPage'
+    })
+  
+    let frontPage = entriesFilteredForFrontPage.map((element) => {
+      return {
+        title: element.fields.title,
+        description: element.fields.description
+      }
+      })[0]   
+
+            // filter only imprint out of all entries fetched
+      entriesFilteredForImprint = entries.items.filter(function(entry){
+        return entry.sys.contentType.sys.id == 'imprint'
+    })
+
+    let imprint = entriesFilteredForImprint.map((imprint) => {
+      return {
+        content: imprint.fields.content,
+        title: imprint.fields.titlte
+      }
+    })[0]
+
+    res.render('third', {
+       imprint: imprint,
+       offerings: offerings,
+       frontPage:frontPage,
+       languages:languages,
+       chosenLang: req.query["lang"],
+      });
   })
 });
 
