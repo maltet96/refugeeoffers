@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
   
   // get all first level categories
   client.getEntries({
-    'locale': req.query.lang
+    'locale': req.query.lang,
   })
   .then(function (entries) {
   
@@ -36,6 +36,8 @@ router.get('/', function(req, res, next) {
         icon: category.fields.icon,
         id: category.sys.id
       }
+    }).sort(function(a, b){
+      return a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1
     })
 
     // filter the front page elements out of all entries fetched

@@ -69,6 +69,21 @@ a:hover {
   border-top: 1px solid #8c8b8b;  
 }
 
+/* search bar */
+
+.searchcontainer{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.search{
+  margin:20px;
+  height: 40px;
+  border: 2px solid black;
+  font-size: 1.5em
+}
+
 /* languages */
 
 .languages{
@@ -81,3 +96,4 @@ a:hover {
   margin: 10px;
   font-weight: bold;
 }
+

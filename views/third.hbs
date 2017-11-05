@@ -1,10 +1,13 @@
 {{> head}}
     <link rel="stylesheet" href='../../stylesheets/style.css'>
     {{> titleandlang}}
+    <div class="searchcontainer">
+        <input type="text" class="search">
+    </div>
     <div class="offerings">
             {{#each offerings}}
             <div class="offering">
-                <h2>{{this.name}}</h2>
+                <h2 class="offeringName">{{this.name}}</h2>
                 <a href='{{this.website}}'><h3>{{this.institution}}</h3></a>
                 <p>{{this.description}}</p>
                 <hr>
@@ -20,3 +23,13 @@
          {{/each}}
     </div>
 {{> foot}}
+
+<script>
+ $(".search").keyup(function(){
+     let that = $(this)
+
+     $(".offeringName").each(function(){
+         $(this).text().toLocaleLowerCase().indexOf(that.val().toLocaleLowerCase()) != -1 ? $(this).parent().show() : $(this).parent().hide() 
+     })
+ })
+</script>

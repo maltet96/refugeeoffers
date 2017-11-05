@@ -28,10 +28,11 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
        })
     
     let allOfferings = entriesFilteredForCategories.map((offering) => {
+
       return {
         name: offering.fields.title,
-        firstCategories: offering.fields.firstcategory,
-        secondCategories: offering.fields.secondCategory,
+        firstCategories: offering.fields.nd1stCategory,
+        secondCategories: offering.fields.nd2ndCategory,
         institution: offering.fields.institution,
         description: offering.fields.description,
         openingHours: offering.fields.openingHours.replace(";", "<br>"),
@@ -45,12 +46,17 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
 
     let offerings = allOfferings.filter(function(offering){
 
-      console.log(offering.firstCategories);
-        
+        // check if first and second categories have been filled
+        if(offering.firstCategories && offering.secondCategories){
+
         // currently only one category is returned each -- this needs to be changed in the model to be an array and then mapped as in the secondlevel
-        let validFirstCategories = offering.firstCategories.sys.id;
-        let validSecondCategories = offering.secondCategories.sys.id;
-        return validFirstCategories == req.params["firstCategory"] && validSecondCategories == req.params["secondCategory"];
+        let validFirstCategories = offering.firstCategories.map((offering) => {return offering.sys.id});
+        let validSecondCategories = offering.secondCategories.map((offering) => {return offering.sys.id});
+
+        return validFirstCategories.includes(req.params["firstCategory"]) && validSecondCategories.includes(req.params["secondCategory"]);
+        }
+    }).sort(function(a, b){
+      return a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1
     })
 
 

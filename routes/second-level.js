@@ -44,6 +44,8 @@ router.get('/:firstCategory', function(req, res, next) {
       });
 
       return validFirstCategories.includes(req.params["firstCategory"]);
+    }).sort(function(a, b){
+      return a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1
     })
 
 
