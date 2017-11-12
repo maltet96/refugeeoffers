@@ -1,8 +1,11 @@
 {{> head}}
-    <link rel="stylesheet" href='../../stylesheets/style.css'>
     {{> titleandlang}}
+    </div>
     <div class="searchcontainer">
-        <input type="text" class="search">
+        <div class="search">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="text" style="border: none;">
+        </div>
     </div>
     <div class="offerings">
             {{#each offerings}}
@@ -25,7 +28,7 @@
 {{> foot}}
 
 <script>
- $(".search").keyup(function(){
+ $(".search > input").keyup(function(){
      let that = $(this)
 
      $(".offeringName").each(function(){

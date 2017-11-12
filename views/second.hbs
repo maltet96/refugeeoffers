@@ -1,12 +1,12 @@
 {{> head}}
-    <link rel="stylesheet" href='../stylesheets/style.css'>
     {{> titleandlang}}
+    </div>
     <div class="categories">
       {{#each categories}}
       <a href='/third/{{this.firstLevel}}/{{this.id}}?lang={{chosenLang}}'>
           <div class='category'>            
             <h2 class='name'>{{this.name}}</h2>
-            {{{this.icon}}}
+            <div class="icon">{{{this.icon}}}</div>
           </div>
        </a>
       {{/each}}
