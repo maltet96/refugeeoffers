@@ -80,13 +80,38 @@ router.get('/', function(req, res, next) {
       }
     })[0]
 
+      // filter the offerings  out of all entries fetched
+      let entriesFilteredForCategories = entries.items.filter(function(entry){
+        return entry.sys.contentType.sys.id == 'offering'
+       })
+    
+    let allOfferings = entriesFilteredForCategories.map((offering) => {
+
+      return {
+        name: offering.fields.title,
+        firstCategories: offering.fields.nd1stCategory,
+        secondCategories: offering.fields.nd2ndCategory,
+        institution: offering.fields.institution,
+        description: offering.fields.description,
+        openingHours: offering.fields.openingHours.replace(";", "<br>"),
+        contactPersonPhoneNumber: offering.fields.contactPersonPhoneNumber,
+        contactPersonEmailAddress: offering.fields.contactPersonEmailAddress,
+        website: offering.fields.website,
+        contactPerson: offering.fields.ansprechpartner,
+        address: offering.fields.adresse
+      }
+    }).sort(function(a, b){
+      return a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1
+    })
+
 
     res.render('first', { 
       imprint: imprint,
       categories: categories,
       frontPage: frontPage,
       languages: languages,
-      chosenLang: req.query["lang"]
+      chosenLang: req.query["lang"],
+      offerings: allOfferings
     });
   })
 });

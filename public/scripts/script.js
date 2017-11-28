@@ -1,3 +1,4 @@
+
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
@@ -19,8 +20,16 @@ $(".language").each(function(){
     }
 })
 
-
-console.log($(".language:contains(de)"));
 if(!found){
     $(".language:contains(de)").addClass("highlighted");
 }
+
+$(".offering").each(function(){$(this).hide()})
+
+$(".search > input").keyup(function(){
+    let that = $(this)
+
+    $(".offeringName").each(function(){
+        $(this).text().toLocaleLowerCase().indexOf(that.val().toLocaleLowerCase()) != -1 ? $(this).parent().show() : $(this).parent().hide() 
+    })
+})

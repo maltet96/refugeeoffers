@@ -13,4 +13,29 @@
        </a>
       {{/each}}
     </div>
+    <hr>
+    <div class="searchcontainer">
+      <div class="search">
+           <i class="fa fa-search" aria-hidden="true"></i>
+           <input type="text" placeholder='{{frontPage.search}}' style="border: none;">
+       </div>
+    </div>
+    <div class="offerings">
+            {{#each offerings}}
+            <div class="offering">
+                <h2 class="offeringName">{{this.name}}</h2>
+                <a href='{{this.website}}'><h3>{{this.institution}}</h3></a>
+                <p>{{this.description}}</p>
+                <hr>
+                <div class='contact'>
+                  <p>{{this.address}}</p>
+                  <p>{{this.contactPerson}}</p>
+                  <a href='mailto:{{this.contactPersonEmailAddress}}'><i class="fa fa-envelope" aria-hidden="true"></i>{{this.contactPersonEmailAddress}}</a><br>
+                  <a href='tel:{{this.contactPersonPhoneNumber}}'><i class="fa fa-phone" aria-hidden="true"></i>{{this.contactPersonPhoneNumber}}</a><br>
+                  <p>{{{this.openingHours}}}</p>
+                </div>
+                <hr class='end'>
+             </div>
+         {{/each}}
+    </div>
 {{> foot }}

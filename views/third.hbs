@@ -1,12 +1,6 @@
 {{> head}}
     {{> titleandlang}}
     </div>
-    <div class="searchcontainer">
-        <div class="search">
-            <i class="fa fa-search" aria-hidden="true"></i>
-            <input type="text" style="border: none;">
-        </div>
-    </div>
     <div class="offerings">
             {{#each offerings}}
             <div class="offering">
@@ -26,13 +20,3 @@
          {{/each}}
     </div>
 {{> foot}}
-
-<script>
- $(".search > input").keyup(function(){
-     let that = $(this)
-
-     $(".offeringName").each(function(){
-         $(this).text().toLocaleLowerCase().indexOf(that.val().toLocaleLowerCase()) != -1 ? $(this).parent().show() : $(this).parent().hide() 
-     })
- })
-</script>

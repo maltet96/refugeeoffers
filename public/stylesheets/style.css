@@ -18,7 +18,7 @@ body {
 
 .header{
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   flex-wrap: wrap;
   width: 100%;
   border-bottom: 2px solid rgba(39, 55, 118, 1);
@@ -27,6 +27,7 @@ body {
 .maintitle{
   width: 100%;
   font-weight: 900;
+  text-align: center
 }
 
 
