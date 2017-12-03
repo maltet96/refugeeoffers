@@ -24,7 +24,7 @@ if(!found){
     $(".language:contains(de)").addClass("highlighted");
 }
 
-$(".offering").each(function(){$(this).hide()})
+$(".offeringfirst").each(function(){$(this).hide()})
 
 $(".search > input").keyup(function(){
     let that = $(this)
