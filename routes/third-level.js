@@ -34,7 +34,8 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
         firstCategories: offering.fields.nd1stCategory,
         secondCategories: offering.fields.nd2ndCategory,
         institution: offering.fields.institution,
-        description: offering.fields.description,
+        // insert <br> tag at the end of each line
+        description: offering.fields.description.split(/\n|\s\n/).join("<br>\n") + "<br>",
         openingHours: offering.fields.openingHours.replace(";", "<br>"),
         contactPersonPhoneNumber: offering.fields.contactPersonPhoneNumber,
         contactPersonEmailAddress: offering.fields.contactPersonEmailAddress,
