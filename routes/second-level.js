@@ -103,6 +103,8 @@ router.get('/:firstCategory', function(req, res, next) {
             }
           })[0]
 
+    console.log(req.headers.referer)
+
     res.render('second', { 
       categories: categories,
       languages: languages,
