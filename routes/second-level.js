@@ -57,15 +57,27 @@ router.get('/:firstCategory', function(req, res, next) {
     })
 
 
-    // filter the langauges out of all entries fetched
-    let languages = entriesFilteredForLanguages.map((language) => {
-
-      return {
-        name: language.fields.name,
-        short: language.fields.shortForm,
-        code: language.fields.languageCode
-      }
-    })
+  // filter the languages out of all entries fetched
+  let languages = entriesFilteredForLanguages.map((language) => {
+    
+    // make de and en appear first 
+    if(language.fields.shortForm == "de"){
+      language.order = 1;
+    }
+    else if(language.fields.shortForm == "en"){
+      language.order = 2;
+    }
+    else {
+      language.order = 3
+    }
+    
+    return {
+      name: language.fields.name,
+      short: language.fields.shortForm,
+      code: language.fields.languageCode,
+      order: language.order
+    }
+  }).sort(function(x,y){ return x.order <= y.order ? 1 : -1});
 
      // filter the front page elements out of all entries fetched
      entriesFilteredForFrontPage = entries.items.filter(function(entry){
@@ -96,7 +108,8 @@ router.get('/:firstCategory', function(req, res, next) {
       languages: languages,
       frontPage: frontPage,
       chosenLang: req.query["lang"],
-      imprint: imprint
+      imprint: imprint,
+      referer: req.headers.referer
     });
   })
 });

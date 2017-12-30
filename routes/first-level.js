@@ -23,12 +23,11 @@ router.get('/', function(req, res, next) {
     'locale': req.query.lang,
   })
   .then(function (entries) {
-  
+      
     // filter only first categories out of all entries fetched
     entriesFilteredForCategory = entries.items.filter(function(entry){
         return entry.sys.contentType.sys.id == 'firstCategory'
     })
-
 
     let categories = entriesFilteredForCategory.map((category) => {
       return {
@@ -58,15 +57,27 @@ router.get('/', function(req, res, next) {
       return entry.sys.contentType.sys.id == 'language'
   })
   
-  // filter the langauges out of all entries fetched
+  // filter the languages out of all entries fetched
   let languages = entriesFilteredForLanguages.map((language) => {
+    
+    // make de and en appear first 
+    if(language.fields.shortForm == "de"){
+      language.order = 1;
+    }
+    else if(language.fields.shortForm == "en"){
+      language.order = 2;
+    }
+    else {
+      language.order = 3
+    }
     
     return {
       name: language.fields.name,
       short: language.fields.shortForm,
-      code: language.fields.languageCode
+      code: language.fields.languageCode,
+      order: language.order
     }
-  })
+  }).sort(function(x,y){ return x.order <= y.order ? 1 : -1});
 
       // filter only imprint out of all entries fetched
       entriesFilteredForImprint = entries.items.filter(function(entry){
@@ -92,7 +103,8 @@ router.get('/', function(req, res, next) {
         firstCategories: offering.fields.nd1stCategory,
         secondCategories: offering.fields.nd2ndCategory,
         institution: offering.fields.institution,
-        description: offering.fields.description,
+        picture: offering.fields.picture ? offering.fields.picture.fields.file.url : offering.fields.picture,
+        description: offering.fields.description.split(/\n|\s\n/).join("<br>\n") + "<br>",
         openingHours: offering.fields.openingHours.replace(";", "<br>"),
         contactPersonPhoneNumber: offering.fields.contactPersonPhoneNumber,
         contactPersonEmailAddress: offering.fields.contactPersonEmailAddress,
@@ -103,7 +115,6 @@ router.get('/', function(req, res, next) {
     }).sort(function(a, b){
       return a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1
     })
-
 
     res.render('first', { 
       imprint: imprint,

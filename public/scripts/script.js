@@ -33,3 +33,16 @@ $(".search > input").keyup(function(){
         $(this).text().toLocaleLowerCase().indexOf(that.val().toLocaleLowerCase()) != -1 ? $(this).parent().show() : $(this).parent().hide() 
     })
 })
+
+// hide optional description elements
+$(".offeringDescription").each(function(){
+    if($(this).html() == ""){
+        $(this).hide()
+    }
+})
+
+$(".culturepic").each(function(){
+    if($(this).attr("src") == ""){
+        $(this).hide()
+    }
+})

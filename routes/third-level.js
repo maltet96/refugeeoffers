@@ -35,7 +35,8 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
         secondCategories: offering.fields.nd2ndCategory,
         institution: offering.fields.institution,
         // insert <br> tag at the end of each line
-        description: offering.fields.description.split(/\n|\s\n/).join("<br>\n") + "<br>",
+        picture: offering.fields.picture ? offering.fields.picture.fields.file.url : offering.fields.picture,
+        description: offering.fields.description ? offering.fields.description.split(/\n|\s\n/).join("<br>\n") + "<br>" : offering.fields.description,
         openingHours: offering.fields.openingHours.replace(";", "<br>"),
         contactPersonPhoneNumber: offering.fields.contactPersonPhoneNumber,
         contactPersonEmailAddress: offering.fields.contactPersonEmailAddress,
@@ -63,16 +64,28 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
       return entry.sys.contentType.sys.id == 'language'
     })
 
-
-    // filter the langauges out of all entries fetched
+    // filter the languages out of all entries fetched
     let languages = entriesFilteredForLanguages.map((language) => {
+      
+      // make de and en appear first 
+      if(language.fields.shortForm == "de"){
+        language.order = 1;
 
-      return {
-        name: language.fields.name,
-        short: language.fields.shortForm,
-        code: language.fields.languageCode
       }
-    })
+      else if(language.fields.shortForm == "en"){
+        language.order = 2;
+      }
+      else {
+        language.order = 3
+      }
+    
+    return {
+      name: language.fields.name,
+      short: language.fields.shortForm,
+      code: language.fields.languageCode,
+      order: language.order
+    }
+  }).sort(function(x,y){ return x.order <= y.order ? 1 : -1});
 
      // filter the front page elements out of all entries fetched
      entriesFilteredForFrontPage = entries.items.filter(function(entry){
@@ -104,6 +117,7 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
        frontPage:frontPage,
        languages:languages,
        chosenLang: req.query["lang"],
+       referer: req.headers.referer
       });
   })
 });

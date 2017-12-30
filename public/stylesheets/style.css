@@ -55,6 +55,12 @@ a:hover {
   margin-top:40px;
 }
 
+.culturepic{
+  width: 20%;
+  margin-bottom: 20px;
+  border-radius: 3px;
+}
+
 .category{
   width: 300px;
   height:300px;
@@ -63,7 +69,6 @@ a:hover {
   text-align: center;
   border: 2px solid #273776;
   border-radius: 2%;
-  word-break: break-all;
 }
 
  .icon,
@@ -91,6 +96,10 @@ a:hover {
 .offering{
   margin: 20px;
   padding: 20px;
+  width: 100%;
+}
+
+.offeringFirst{
   width: 100%;
 }
 
@@ -139,7 +148,8 @@ a:hover {
 /* languages */
 
 .languages{
-  width:100%;
+  width: 80%;
+  flex-wrap: wrap;
   display: flex;
   flex-direction: row-reverse;
 }
@@ -157,6 +167,24 @@ a:hover {
 
 .imprint{
   margin: 20px;
+  width: 100%;
+  text-align: center;
+  display: block;
+}
+
+.contentful{
+  width: 180;
+  display: block;
+}
+
+.backbutton{
+  width: 15%;
+  border: none;
+  background: none;
+}
+
+.backbutton:hover{
+  color: #273776;
 }
 
 @media (max-width: 500px) { 
@@ -172,6 +200,10 @@ a:hover {
 
   .maintitle > h1{
     font-size: 2em;
+  }
+
+  .culturepic{
+    width: 80%;
   }
 
 
