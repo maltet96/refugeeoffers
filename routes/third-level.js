@@ -16,6 +16,8 @@ const client = contentful.createClient({
 
 router.get('/:firstCategory/:secondCategory', function(req, res, next) {
   
+  console.log("Hello world");
+  
   // get all first level categories
   client.getEntries({
     'locale': req.query["lang"]
@@ -36,7 +38,7 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
         institution: offering.fields.institution,
         // insert <br> tag at the end of each line
         picture: offering.fields.picture ? offering.fields.picture.fields.file.url : offering.fields.picture,
-        description: offering.fields.description ? offering.fields.description.split(/\n|\s\n/).join("<br>\n") + "<br>" : offering.fields.description,
+        //description: offering.fields.description ? offering.fields.description.split(/\n|\s\n/).join("<br>\n") + "<br>" : offering.fields.description,
         openingHours: offering.fields.openingHours.replace(";", "<br>"),
         contactPersonPhoneNumber: offering.fields.contactPersonPhoneNumber,
         contactPersonEmailAddress: offering.fields.contactPersonEmailAddress,
@@ -119,6 +121,8 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
        chosenLang: req.query["lang"],
        referer: req.headers.referer
       });
+  }).catch(err => {
+    console.log(err);
   })
 });
 

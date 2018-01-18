@@ -17,12 +17,14 @@ const client = contentful.createClient({
 })
 
 router.get('/', function(req, res, next) {
-  
+  console.log("ssss")
   // get all first level categories
   client.getEntries({
     'locale': req.query.lang,
   })
   .then(function (entries) {
+
+    console.log("ssss")
       
     // filter only first categories out of all entries fetched
     entriesFilteredForCategory = entries.items.filter(function(entry){
@@ -49,7 +51,7 @@ router.get('/', function(req, res, next) {
       title: element.fields.title,
       description: element.fields.description
     }
-  })[0]
+  })
 
 
   // filter the lnguages out of all entries fetched
@@ -104,7 +106,7 @@ router.get('/', function(req, res, next) {
         secondCategories: offering.fields.nd2ndCategory,
         institution: offering.fields.institution,
         picture: offering.fields.picture ? offering.fields.picture.fields.file.url : offering.fields.picture,
-        description: offering.fields.description.split(/\n|\s\n/).join("<br>\n") + "<br>",
+        description: (offering.fields.description)? offering.fields.description.split(/\n|\s\n/).join("<br>\n") + "<br>" : null,
         openingHours: offering.fields.openingHours.replace(";", "<br>"),
         contactPersonPhoneNumber: offering.fields.contactPersonPhoneNumber,
         contactPersonEmailAddress: offering.fields.contactPersonEmailAddress,
@@ -124,7 +126,7 @@ router.get('/', function(req, res, next) {
       chosenLang: req.query["lang"],
       offerings: allOfferings
     });
-  })
+  }).catch(next);
 });
 
 module.exports = router;
