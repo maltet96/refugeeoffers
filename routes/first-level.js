@@ -107,7 +107,7 @@ router.get('/', function(req, res, next) {
         institution: offering.fields.institution,
         picture: offering.fields.picture ? offering.fields.picture.fields.file.url : offering.fields.picture,
         description: (offering.fields.description)? offering.fields.description.split(/\n|\s\n/).join("<br>\n") + "<br>" : null,
-        openingHours: offering.fields.openingHours.replace(";", "<br>"),
+        openingHours: offering.fields.openingHours ? offering.fields.openingHours.replace(";", "<br>") : null,
         contactPersonPhoneNumber: offering.fields.contactPersonPhoneNumber,
         contactPersonEmailAddress: offering.fields.contactPersonEmailAddress,
         website: offering.fields.website,
