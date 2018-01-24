@@ -78,6 +78,11 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
         language.order = 3
       }
     
+    // for some reason Contentful fucks with Somali and delivers the full name as the language code, so we are changing it manually now
+    if(language.fields.languageCode == "Somali"){
+      language.fields.languageCode = "so"
+    }
+
     return {
       name: language.fields.name,
       short: language.fields.shortForm,

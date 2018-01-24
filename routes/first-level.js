@@ -17,14 +17,12 @@ const client = contentful.createClient({
 })
 
 router.get('/', function(req, res, next) {
-  console.log("ssss")
   // get all first level categories
   client.getEntries({
     'locale': req.query.lang,
   })
   .then(function (entries) {
 
-    console.log("ssss")
       
     // filter only first categories out of all entries fetched
     entriesFilteredForCategory = entries.items.filter(function(entry){
@@ -72,7 +70,12 @@ router.get('/', function(req, res, next) {
     else {
       language.order = 3
     }
-    
+
+    // for some reason Contentful fucks with Somali and delivers the full name as the language code, so we are changing it manually now
+    if(language.fields.languageCode == "Somali"){
+      language.fields.languageCode = "so"
+    }
+
     return {
       name: language.fields.name,
       short: language.fields.shortForm,
