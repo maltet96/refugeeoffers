@@ -2,15 +2,12 @@ var express = require('express');
 var router = express.Router();
 const contentful = require('contentful')
 
-// contentful setuo
-
+// contentful setup
 const SPACE_ID = 'tjuqohmohv21'
 const ACCESS_TOKEN = 'e3070ba893e6549dfd7a4228bb8d2293da869a54c0285bd0b83d1b3f92570b70'
 
 const client = contentful.createClient({
-  // This is the space ID. A space is like a project folder in Contentful terms
   space: SPACE_ID,
-  // This is the access token for this space. Normally you get both ID and the token in the Contentful web app
   accessToken: ACCESS_TOKEN
 })
 
@@ -27,10 +24,10 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
       return entry.sys.contentType.sys.id == 'secondCategory' && entry.sys.id == req.params["secondCategory"]
     }).fields
 
-       // filter the offerings  out of all entries fetched
-      let entriesFilteredForCategories = entries.items.filter(function(entry){
-        return entry.sys.contentType.sys.id == 'offering'
-       })
+    // filter the offerings  out of all entries fetched
+    let entriesFilteredForCategories = entries.items.filter(function(entry){
+      return entry.sys.contentType.sys.id == 'offering'
+    })
     
     let allOfferings = entriesFilteredForCategories.map((offering) => {
 
@@ -62,7 +59,6 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
       return a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1
     })
 
-
     // filter the langages out of all entries fetched
     entriesFilteredForLanguages = entries.items.filter(function(entry){
       return entry.sys.contentType.sys.id == 'language'
@@ -83,18 +79,18 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
         language.order = 3
       }
     
-    // for some reason Contentful fucks with Somali and delivers the full name as the language code, so we are changing it manually now
-    if(language.fields.languageCode == "Somali"){
-      language.fields.languageCode = "so"
-    }
+      // for some reason Contentful fucks with Somali and delivers the full name as the language code, so we are changing it manually now
+      if(language.fields.languageCode == "Somali"){
+        language.fields.languageCode = "so"
+      }
 
-    return {
-      name: language.fields.name,
-      short: language.fields.shortForm,
-      code: language.fields.languageCode,
-      order: language.order
-    }
-  }).sort(function(x,y){ return x.order <= y.order ? 1 : -1});
+      return {
+        name: language.fields.name,
+        short: language.fields.shortForm,
+        code: language.fields.languageCode,
+        order: language.order
+      }
+    }).sort(function(x,y){ return x.order <= y.order ? 1 : -1});
 
      // filter the front page elements out of all entries fetched
      entriesFilteredForFrontPage = entries.items.filter(function(entry){
@@ -108,9 +104,9 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
       }
       })[0]   
 
-            // filter only imprint out of all entries fetched
-      entriesFilteredForImprint = entries.items.filter(function(entry){
-        return entry.sys.contentType.sys.id == 'imprint'
+    // filter only imprint out of all entries fetched
+    entriesFilteredForImprint = entries.items.filter(function(entry){
+       return entry.sys.contentType.sys.id == 'imprint'
     })
 
     let imprint = entriesFilteredForImprint.map((imprint) => {

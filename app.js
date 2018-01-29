@@ -27,7 +27,6 @@ app.engine('hbs', hbs({
   ]
 }));
 
-
 app.set('view engine', 'hbs');
 
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
