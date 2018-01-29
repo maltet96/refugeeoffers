@@ -18,13 +18,14 @@ router.get('/:firstCategory', function(req, res, next) {
   
   // get all first level categories
   client.getEntries({
-    'locale': req.query.lang    
+    'locale': req.query.lang,
+    'limit': 1000
   })
   .then(function (entries) {
 
     let categoryInfos = entries.items.find(function(entry){
       return entry.sys.contentType.sys.id == 'firstCategory' && entry.sys.id == req.params["firstCategory"]
-    }).fields
+    })
 
     // filter the categories  out of all entries fetched
     let entriesFilteredForCategories = entries.items.filter(function(entry){

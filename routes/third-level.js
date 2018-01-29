@@ -18,7 +18,8 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
     
   // get all first level categories
   client.getEntries({
-    'locale': req.query["lang"]
+    'locale': req.query["lang"],
+    'limit': 1000
   })
   .then(function (entries) {
 

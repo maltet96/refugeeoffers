@@ -5,7 +5,6 @@ const contentful = require('contentful')
 
 
 // contentful setup
-
 const SPACE_ID = 'tjuqohmohv21'
 const ACCESS_TOKEN = 'e3070ba893e6549dfd7a4228bb8d2293da869a54c0285bd0b83d1b3f92570b70'
 
@@ -20,14 +19,17 @@ router.get('/', function(req, res, next) {
   // get all first level categories
   client.getEntries({
     'locale': req.query.lang,
+    'limit': 1000
   })
   .then(function (entries) {
-
       
     // filter only first categories out of all entries fetched
     entriesFilteredForCategory = entries.items.filter(function(entry){
         return entry.sys.contentType.sys.id == 'firstCategory'
     })
+
+    console.log(entriesFilteredForCategory.length)
+
 
     let categories = entriesFilteredForCategory.map((category) => {
       return {
@@ -49,7 +51,8 @@ router.get('/', function(req, res, next) {
       title: element.fields.title,
       description: element.fields.description
     }
-  })
+  })[0]
+
 
 
   // filter the lnguages out of all entries fetched
@@ -97,11 +100,11 @@ router.get('/', function(req, res, next) {
     })[0]
 
       // filter the offerings  out of all entries fetched
-      let entriesFilteredForCategories = entries.items.filter(function(entry){
+      let entriesFilteredForOfferings = entries.items.filter(function(entry){
         return entry.sys.contentType.sys.id == 'offering'
        })
     
-    let allOfferings = entriesFilteredForCategories.map((offering) => {
+    let allOfferings = entriesFilteredForOfferings.map((offering) => {
 
       return {
         name: offering.fields.title,
