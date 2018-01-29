@@ -47,7 +47,6 @@ $(".culturepic").each(function(){
 })
 
 // color offerings in an alternating fashion
-
 var colors = ["rgba(157, 57, 57, 0.6)", "rgba(221, 136, 56, 0.6)", "rgba(69, 144, 173, 0.6)"]
 
 $(".firstcategory").each(function(index, value){

@@ -22,6 +22,10 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
   })
   .then(function (entries) {
 
+    let categoryInfos = entries.items.find(function(entry){
+      return entry.sys.contentType.sys.id == 'secondCategory' && entry.sys.id == req.params["secondCategory"]
+    }).fields
+
        // filter the offerings  out of all entries fetched
       let entriesFilteredForCategories = entries.items.filter(function(entry){
         return entry.sys.contentType.sys.id == 'offering'
@@ -122,7 +126,8 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
        languages:languages,
        chosenLang: req.query["lang"],
        referer: req.headers.referer,
-       color: req.query["color"]
+       color: req.query["color"],
+       category: categoryInfos
       });
   }).catch(err => {
     console.log(err);

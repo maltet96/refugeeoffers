@@ -2,10 +2,13 @@
     <a class="backbutton" href="{{referer}}"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
     {{> titleandlang}}
     </div>
+    <div class="levelheadingcontainer">
+      <h2 class="levelheading {{color}}">{{{category.icon}}}{{category.title}}</h2>
+    </div>
     <div class="categories">
       {{#each categories}}
-      <a href='/third/{{this.firstLevel}}/{{this.id}}?lang={{../chosenLang}}'>
-          <div class='category {{../color}}'>            
+      <a href='/third/{{this.firstLevel}}/{{this.id}}?lang={{../chosenLang}}&color={{../color}}'>
+          <div class='category {{../color}} secondcategory'>            
             <h2 class='name'>{{this.name}}</h2>
             <div class="icon">{{{this.icon}}}</div>
           </div>

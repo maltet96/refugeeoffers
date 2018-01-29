@@ -22,6 +22,10 @@ router.get('/:firstCategory', function(req, res, next) {
   })
   .then(function (entries) {
 
+    let categoryInfos = entries.items.find(function(entry){
+      return entry.sys.contentType.sys.id == 'firstCategory' && entry.sys.id == req.params["firstCategory"]
+    }).fields
+
     // filter the categories  out of all entries fetched
     let entriesFilteredForCategories = entries.items.filter(function(entry){
       return entry.sys.contentType.sys.id == 'secondCategory'
@@ -108,8 +112,6 @@ router.get('/:firstCategory', function(req, res, next) {
             }
           })[0]
 
-    console.log(req.headers.referer)
-
     res.render('second', { 
       categories: categories,
       languages: languages,
@@ -117,7 +119,8 @@ router.get('/:firstCategory', function(req, res, next) {
       chosenLang: req.query["lang"],
       imprint: imprint,
       referer: req.headers.referer,
-      color: "color" + req.query["color"]
+      color: "color" + req.query["color"],
+      category: categoryInfos
     });
   })
 });
