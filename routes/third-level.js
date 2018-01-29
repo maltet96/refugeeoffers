@@ -121,7 +121,8 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
        frontPage:frontPage,
        languages:languages,
        chosenLang: req.query["lang"],
-       referer: req.headers.referer
+       referer: req.headers.referer,
+       color: req.query["color"]
       });
   }).catch(err => {
     console.log(err);

@@ -1,4 +1,3 @@
-
 function getParameterByName(name, url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, "\\$&");
@@ -45,4 +44,14 @@ $(".culturepic").each(function(){
     if($(this).attr("src") == ""){
         $(this).hide()
     }
+})
+
+// color offerings in an alternating fashion
+
+var colors = ["rgba(157, 57, 57, 0.6)", "rgba(221, 136, 56, 0.6)", "rgba(69, 144, 173, 0.6)"]
+
+$(".firstcategory").each(function(index, value){
+    $(this).css("background-color", colors[index % 3]);
+    var link_wo_color = $(this).parent().attr("href");
+    $(this).parent().attr("href", link_wo_color + "&color=" + (index % 3).toString());
 })

@@ -21,7 +21,7 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
-  border-bottom: 2px solid rgba(39, 55, 118, 1);
+  border-bottom: 2px solid black;
 }
 /* front page */
 .maintitle{
@@ -67,7 +67,7 @@ a:hover {
   margin: 20px;
   padding: 20px;
   text-align: center;
-  border: 2px solid #273776;
+  border: 2px solid black;
   border-radius: 2%;
 }
 
@@ -77,15 +77,16 @@ a:hover {
   align-items: center;
   justify-content: center;
   height: 50%;
+  color: black;
 }
 
 .icon{
   align-items: flex-start;
-  color: #273776;
+  color: black;
 }
 
 .category:hover{
-  border: 3px solid rgba(39, 55, 118, 1);
+  border: 3px solid black;
   font-weight: 900;
 }
 
@@ -137,7 +138,7 @@ a:hover {
 }
 
 .fa-search{
-  color: rgba(39, 55, 118, 0.7);
+  color: black;
   margin: 5px;
 }
 
@@ -161,8 +162,8 @@ a:hover {
 
 .highlighted{
   font-weight: 900;
-  color: rgba(39, 55, 118, 1);
-  border-bottom: 1px solid #273776;
+  color: black;
+  border-bottom: 1px solid black;
 }
 
 .imprint{
@@ -184,7 +185,7 @@ a:hover {
 }
 
 .backbutton:hover{
-  color: #273776;
+  color: black;
 }
 
 @media (max-width: 500px) { 
@@ -196,6 +197,7 @@ a:hover {
 
   .name{
     font-size: 1.5em;
+    color: black;
   }
 
   .maintitle > h1{
@@ -207,4 +209,18 @@ a:hover {
   }
 
 
+}
+
+/* colors for second and third levels */
+
+.color0{
+  background-color: rgba(157, 57, 57, 0.6);
+}
+
+.color1{
+  background-color: rgba(221, 136, 56, 0.6);
+}
+
+.color2{
+  background-color: rgba(69, 144, 173, 0.6);
 }

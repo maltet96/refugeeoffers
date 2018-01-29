@@ -116,7 +116,8 @@ router.get('/:firstCategory', function(req, res, next) {
       frontPage: frontPage,
       chosenLang: req.query["lang"],
       imprint: imprint,
-      referer: req.headers.referer
+      referer: req.headers.referer,
+      color: "color" + req.query["color"]
     });
   })
 });
