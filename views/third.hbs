@@ -7,7 +7,7 @@
             <h2 class="levelheading {{color}}">{{{category.icon}}}{{category.title}}</h2>
         </div>
             {{#each offerings}}
-            <div class="offering">
+            <div class="offering {{../color}}">
                 <h2 class="offeringName">{{this.name}}</h2>
                 <img class="culturepic" src="{{this.picture}}">
                 <a href='{{this.website}}'><h3>{{this.institution}}</h3></a>
