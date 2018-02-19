@@ -94,21 +94,29 @@ router.get('/', function(req, res, next) {
     })
     
     let allOfferings = entriesFilteredForOfferings.map((offering) => {
-      
-      return {
-        name: offering.fields.title,
-        firstCategories: offering.fields.nd1stCategory,
-        secondCategories: offering.fields.nd2ndCategory,
-        institution: offering.fields.institution,
-        picture: offering.fields.picture ? offering.fields.picture.fields.file.url : offering.fields.picture,
-        description: (offering.fields.description)? offering.fields.description.split(/\n|\s\n/).join("<br>\n") + "<br>" : null,
-        openingHours: offering.fields.openingHours ? offering.fields.openingHours.replace(";", "<br>") : null,
-        contactPersonPhoneNumber: offering.fields.contactPersonPhoneNumber,
-        contactPersonEmailAddress: offering.fields.contactPersonEmailAddress,
-        website: offering.fields.website,
-        contactPerson: offering.fields.ansprechpartner,
-        address: offering.fields.adresse
+      try{
+        return {
+          name: offering.fields.title,
+          firstCategories: offering.fields.nd1stCategory,
+          secondCategories: offering.fields.nd2ndCategory,
+          institution: offering.fields.institution,
+          picture: offering.fields.picture ? offering.fields.picture.fields.file.url : offering.fields.picture,
+          description: (offering.fields.description)? offering.fields.description.split(/\n|\s\n/).join("<br>\n") + "<br>" : null,
+          openingHours: offering.fields.openingHours ? offering.fields.openingHours.replace(";", "<br>") : null,
+          contactPersonPhoneNumber: offering.fields.contactPersonPhoneNumber,
+          contactPersonEmailAddress: offering.fields.contactPersonEmailAddress,
+          website: offering.fields.website,
+          contactPerson: offering.fields.ansprechpartner,
+          address: offering.fields.adresse
+        } 
       }
+      catch(error){
+        console.log("Following entry errored:")
+        console.log(offering)
+        console.log(offering.fields)
+        console.log(error)
+      }
+    
     }).sort(function(a, b){
       return a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1
     })
