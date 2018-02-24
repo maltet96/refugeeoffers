@@ -36,7 +36,7 @@ router.get('/', function(req, res, next) {
     entriesFilteredForFrontPage = entries.items.filter(function(entry){
       return entry.sys.contentType.sys.id == 'frontPage'
     })
-    
+
     let frontPage = entriesFilteredForFrontPage.map((element) => {
       return {
         title: element.fields.title,
@@ -48,11 +48,11 @@ router.get('/', function(req, res, next) {
     entriesFilteredForLanguages = entries.items.filter(function(entry){
         return entry.sys.contentType.sys.id == 'language'
     })
-  
+
     // filter the languages out of all entries fetched
     let languages = entriesFilteredForLanguages.map((language) => {
-      
-      // make de and en appear first 
+
+      // make de and en appear first
       if(language.fields.shortForm == "de"){
         language.order = 1;
       }
@@ -84,7 +84,7 @@ router.get('/', function(req, res, next) {
     let imprint = entriesFilteredForImprint.map((imprint) => {
       return {
         content: imprint.fields.content,
-        title: imprint.fields.titlte
+        title: imprint.fields.title
       }
     })[0]
 
@@ -92,9 +92,9 @@ router.get('/', function(req, res, next) {
     let entriesFilteredForOfferings = entries.items.filter(function(entry){
       return entry.sys.contentType.sys.id == 'offering'
     })
-    
+
     let allOfferings = entriesFilteredForOfferings.map((offering) => {
-      
+
       return {
         name: offering.fields.title,
         firstCategories: offering.fields.nd1stCategory,
@@ -113,7 +113,7 @@ router.get('/', function(req, res, next) {
       return a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1
     })
 
-    res.render('first', { 
+    res.render('first', {
       imprint: imprint,
       categories: categories,
       frontPage: frontPage,
