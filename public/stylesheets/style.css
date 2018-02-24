@@ -1,5 +1,5 @@
 *{
-  font-family: 'Varela Round', sans-serif;  
+  font-family: 'Varela Round', sans-serif;
 }
 
 input:focus,
@@ -21,7 +21,6 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
-  border-bottom: 2px solid black;
 }
 /* front page */
 .maintitle{
@@ -30,6 +29,7 @@ body {
   text-align: center;
   color: black;
   margin: 30px;
+  border-bottom: 2px solid black;
 }
 
 .maintitle h1{
@@ -41,15 +41,16 @@ body {
   width: 80%;
   margin-bottom: 50px;
   font-size: 1.5em;
-  margin-top: 40px;
+  margin: 40px auto 40px auto;
+  text-align: center;
 }
 
 
 /* general */
 a,
 a:hover {
-  color: inherit; 
-  text-decoration: inherit; 
+  color: inherit;
+  text-decoration: inherit;
 }
 
 .categories,
@@ -120,7 +121,7 @@ a:hover {
   padding: 20px;
   -webkit-box-shadow: -9px 11px 42px -15px rgba(0,0,0,0.75);
   -moz-box-shadow: -9px 11px 42px -15px rgba(0,0,0,0.75);
-  box-shadow: -9px 11px 42px -15px rgba(0,0,0,0.75);  
+  box-shadow: -9px 11px 42px -15px rgba(0,0,0,0.75);
   border: 2px solid;
   border-radius: 7px;
 }
@@ -214,7 +215,7 @@ a:hover {
   color: black;
 }
 
-@media (max-width: 500px) { 
+@media (max-width: 500px) {
 
   .category{
     width: 250px;
@@ -241,7 +242,7 @@ a:hover {
   .levelheading{
     font-size: 1.2em;
   }
-  
+
   .levelheadingcontainer .fa{
     font-size: 1.2em;
   }
@@ -281,6 +282,7 @@ a:hover {
   font-size: 2em;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .levelheading svg{
