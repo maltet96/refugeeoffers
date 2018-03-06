@@ -28,14 +28,18 @@ body {
   font-weight: 900;
   text-align: center;
   color: black;
-  margin: 30px;
-  border-bottom: 2px solid black;
+  /*margin: 0 30px;*/
 }
 
 .maintitle h1{
   font-size: 4em;
+  border-bottom: 2px solid black;
+  border-color: 4190ad;
+  width: 60%;
+  margin: 20px auto 0 auto;
+  justify-content: center;
+  padding-bottom: 0.65em;
 }
-
 
 .description{
   width: 80%;
@@ -43,6 +47,10 @@ body {
   font-size: 1.5em;
   margin: 40px auto 40px auto;
   text-align: center;
+}
+
+.coverpicture{
+  width: 100%;
 }
 
 
@@ -108,8 +116,8 @@ a:hover {
   margin: 20px;
   padding: 20px;
   width: 100%;
-  -webkit-box-shadow: -9px 11px 42px -15px rgba(0,0,0,0.75);
-  -moz-box-shadow: -9px 11px 42px -15px rgba(0,0,0,0.75);
+  /*-webkit-box-shadow: -9px 11px 42px -15px rgba(0,0,0,0.75);
+  -moz-box-shadow: -9px 11px 42px -15px rgba(0,0,0,0.75);*/
   box-shadow: -9px 11px 42px -15px rgba(0,0,0,0.75);
   border: 2px solid;
   border-radius: 7px;
@@ -124,6 +132,10 @@ a:hover {
   box-shadow: -9px 11px 42px -15px rgba(0,0,0,0.75);
   border: 2px solid;
   border-radius: 7px;
+}
+
+.offeringDescription{
+  border: 2px solid;
 }
 
 .contact{
