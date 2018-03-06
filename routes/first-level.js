@@ -40,7 +40,7 @@ router.get('/', function(req, res, next) {
     let frontPage = entriesFilteredForFrontPage.map((element) => {
       return {
         title: element.fields.title,
-        description: element.fields.description,
+        description: element.fields.description.split(/\n|\s\n/).join("<br>\n") + "<br>",
         coverpicture: element.fields.coverpicture.fields.file.url
       }
     })[0]
@@ -109,7 +109,7 @@ router.get('/', function(req, res, next) {
           website: offering.fields.website,
           contactPerson: offering.fields.ansprechpartner,
           address: offering.fields.adresse
-        } 
+        }
       }
       catch(error){
         console.log("Following entry errored:")
@@ -117,7 +117,7 @@ router.get('/', function(req, res, next) {
         console.log(offering.fields)
         console.log(error)
       }
-    
+
     }).sort(function(a, b){
       return a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1
     })
