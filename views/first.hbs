@@ -3,17 +3,6 @@
 {{> head}}
    {{> titleandlang}}
     <p class='description'>{{frontPage.description}}</p></div>
-    <div class="categories">
-      {{#each categories}}
-      <a href='/second/{{this.id}}?lang={{../chosenLang}}'>
-          <div class='category firstcategory'>
-            <h2 class='name'>{{this.name}}</h2>
-            <div class="icon">{{{this.icon}}}</div>
-          </div>
-       </a>
-      {{/each}}
-    </div>
-    <hr>
     <div class="searchcontainer">
       <div class="search">
            <i class="fa fa-search" aria-hidden="true"></i>
@@ -22,7 +11,7 @@
     </div>
     <div class="offerings">
             {{#each offerings}}
-            <div class="offeringfirst">
+            <div class="offeringFirst">
                 <h2 class="offeringName">{{this.name}}</h2>
                 <a href='{{this.website}}'><h3>{{this.institution}}</h3></a>
                 <img class="culturepic" src="{{this.picture}}">
@@ -38,5 +27,16 @@
                 <hr class='end'>
              </div>
          {{/each}}
+    </div>
+    <hr>
+    <div class="categories">
+      {{#each categories}}
+      <a href='/second/{{this.id}}?lang={{../chosenLang}}'>
+          <div class='category firstcategory'>
+            <h2 class='name'>{{this.name}}</h2>
+            <div class="icon">{{{this.icon}}}</div>
+          </div>
+       </a>
+      {{/each}}
     </div>
 {{> foot }}
