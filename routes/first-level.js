@@ -40,7 +40,8 @@ router.get('/', function(req, res, next) {
     let frontPage = entriesFilteredForFrontPage.map((element) => {
       return {
         title: element.fields.title,
-        description: element.fields.description
+        description: element.fields.description,
+        coverpicture: element.fields.coverpicture.fields.file.url
       }
     })[0]
 
