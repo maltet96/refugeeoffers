@@ -9,19 +9,27 @@
             {{#each offerings}}
             <div class="offering {{../color}}">
                 <h2 class="offeringName">{{this.name}}</h2>
-                <img class="culturepic" src="{{this.picture}}">
-                <a href='{{this.website}}'><h3>{{this.institution}}</h3></a>
                 <p class="offeringDescription">{{{this.description}}}</p>
                 <hr>
                 <div class='contact'>
-                  <p>{{this.address}}</p>
-                  <p>{{this.contactPerson}}</p>
-                  <a href='mailto:{{this.contactPersonEmailAddress}}'><i class="fa fa-envelope" aria-hidden="true"></i>{{this.contactPersonEmailAddress}}</a><br>
-                  <a href='tel:{{this.contactPersonPhoneNumber}}'><i class="fa fa-phone" aria-hidden="true"></i>{{this.contactPersonPhoneNumber}}</a><br>
-                  <p>{{{this.openingHours}}}</p>
+                  <a class='column culturepic' href='{{this.website}}'><img src="{{this.picture}}"></a>
+                  <!--<div class="adresseAndPerson">
+                    <p>{{this.address}}</p>
+                    <p>{{this.contactPerson}}</p>
+                  </div>-->
+                  <div class='mailAndPhone column'>
+                    <a href='mailto:{{this.contactPersonEmailAddress}}'><i class="fa fa-envelope" aria-hidden="true"></i>{{this.contactPersonEmailAddress}}</a><br>
+                    <a href='tel:{{this.contactPersonPhoneNumber}}'><i class="fa fa-phone" aria-hidden="true"></i>{{this.contactPersonPhoneNumber}}</a><br>
+                  </div>
+                  <div class='openingHours column'>
+                    <p>Adresse:</p>
+                    <p>{{{this.adresse}}}</p>
+                    <p>Öffnungszeiten:</p>
+                    <p>{{{this.openingHours}}}</p>
+                  </div>
                 </div>
                 <hr class='end'>
-             </div>
+            </div>
          {{/each}}
     </div>
 {{> foot}}

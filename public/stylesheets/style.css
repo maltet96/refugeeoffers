@@ -70,12 +70,6 @@ a:hover {
   margin-top:40px;
 }
 
-.culturepic{
-  width: 10%;
-  margin-bottom: 20px;
-  border-radius: 3px;
-}
-
 .category{
   width: 300px;
   height:300px;
@@ -115,7 +109,7 @@ a:hover {
 .offering{
   margin: 20px;
   padding: 20px;
-  width: 100%;
+  width: 80%;
   /*-webkit-box-shadow: -9px 11px 42px -15px rgba(0,0,0,0.75);
   -moz-box-shadow: -9px 11px 42px -15px rgba(0,0,0,0.75);*/
   box-shadow: -9px 11px 42px -15px rgba(0,0,0,0.75);
@@ -134,24 +128,52 @@ a:hover {
   border-radius: 7px;
 }
 
-.contact{
-  margin-top: 20px;
-  margin-bottom: 20px;
+.offeringName{
+  margin-bottom: 30px;
+  margin-left: 20px;
 }
 
-.contact a{
-  margin-bottom: 10px;
+.offeringDescription {
+  margin-left: 20px;
+  font-size: 1.2em;
+}
+
+.contact{
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.column {
+  width: 33.33333%;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.column img {
   display: block;
+  max-height: 150px;
+  max-width: 90%;
+
+}
+
+.culturepic,
+.mailAndPhone {
+  float: left;
+  border-right: solid grey 2px;
 }
 
 .contact svg{
   margin-right: 10px;
 }
 
-.fa{
+/*.fa{
   margin-right: 10px;
   margin-bottom: 10px;
-}
+}*/
 
 /* search bar */
 
