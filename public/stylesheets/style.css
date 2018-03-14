@@ -157,7 +157,10 @@ a:hover {
   display: block;
   max-height: 150px;
   max-width: 90%;
+}
 
+.mailAndPhone a {
+  line-height: 40px;
 }
 
 .culturepic,
@@ -168,6 +171,10 @@ a:hover {
 
 .contact svg{
   margin-right: 10px;
+}
+
+.responsive {
+  display: none;
 }
 
 /*.fa{
@@ -231,7 +238,7 @@ a:hover {
 }
 
 .contentful{
-  width: 180;
+  width: 180px;
   display: block;
 }
 
@@ -245,19 +252,109 @@ a:hover {
   color: black;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1024px) {
 
   .category{
     width: 250px;
-    height:250px;
+    height: 250px;
+    margin: 20px;
+  }
+
+  .name {
+    font-size: 1.8em;
+    height: 70px;
+  }
+
+  .offering {
+    width: 90%;
+  }
+
+  .contact {
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 800px) {
+
+  .categories,
+  .offerings{
+    margin-top: 0px;
+  }
+
+  .category{
+    width: 180px;
+    height: 180px;
+    margin: 20px;
+    padding: 0px;
+  }
+
+  .name {
+    font-size: 1.25em;
+    height: 55px;
+    color: black;
+  }
+
+  .icon svg {
+    height: 60px;
+    color: black;
+  }
+
+  .maintitle > h1{
+    width: 80%;
+  }
+
+  .description {
+    font-size: 1.25em;
+  }
+
+  .searchcontainer{
+    margin-top: 0px;
+  }
+
+  .offering {
+    width: 100%;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .responsive {
+    display: flex;
+    flex-direction: column;
+    line-height: 1px;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    width: 100px;
+    font-size: 3em;
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  .category{
+    width: 120px;
+    height: 120px;
+    margin: 15px;
+    border: 1px solid;
   }
 
   .maintitle h1{
     font-size: 2em;
+    width: 100%;
   }
 
-  .name{
-    font-size: 1.5em;
+  .name {
+    font-size: 0.75em;
+    height: 30px;
+    color: black;
+  }
+
+  .icon svg {
+    height: 35px;
     color: black;
   }
 
@@ -265,18 +362,112 @@ a:hover {
     font-size: 2em;
   }
 
-  .culturepic{
-    width: 80%;
+  .description {
+    font-size: 1em;
+    width: 100%;
+    margin: 20px auto 45px auto;
   }
 
   .levelheading{
     font-size: 1.2em;
+    height: 120px;
+    margin: 0 auto;
   }
 
   .levelheadingcontainer .fa{
     font-size: 1.2em;
   }
 
+  .search{
+    height: 30px;
+    border: 2px solid black;
+    font-size: 1em;
+  }
+
+  .offeringName,
+  .offeringDescription {
+    margin: 10px auto;
+    width: 100%;
+  }
+
+  .culturepic {
+    width: 100%;
+    border: none;
+  }
+
+  .column {
+    max-height: 100px;
+    float: none;
+  }
+
+  .responsive {
+    padding-top: 0;
+    line-height: 25px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0 auto;
+    text-align: center;
+  }
+
+  .mailAndPhone {
+    border: none;
+    float: none;
+    margin: 0 auto;
+  }
+
+  .responsive a {
+    margin: 0 10px;
+  }
+
+  .openingHours {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: none;
+    margin: 0 auto;
+  }
+
+  .contentful {
+    width: 40%;
+  }
+
+}
+
+@media (max-width: 400px) {
+
+  .category{
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+  }
+
+  .name {
+    font-size: 0.75em;
+    height: 20px;
+    color: black;
+  }
+
+  .icon svg {
+    height: 30px;
+    color: black;
+  }
+
+  .search{
+    border: 1.25px solid black;
+  }
+
+  .offering {
+    width: 100%;
+  }
+
+  .offeringName {
+    font-size: 1.5em;
+  }
+
+  .offeringDescription {
+    font-size: 1em;
+  }
 
 }
 

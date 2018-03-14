@@ -18,12 +18,18 @@
                     <p>{{this.contactPerson}}</p>
                   </div>-->
                   <div class='mailAndPhone column'>
-                    <a href='mailto:{{this.contactPersonEmailAddress}}'><i class="fa fa-envelope" aria-hidden="true"></i>{{this.contactPersonEmailAddress}}</a><br>
-                    <a href='tel:{{this.contactPersonPhoneNumber}}'><i class="fa fa-phone" aria-hidden="true"></i>{{this.contactPersonPhoneNumber}}</a><br>
+                    <div class="desktop">
+                      <a href='mailto:{{this.contactPersonEmailAddress}}'><i class="fa fa-envelope" aria-hidden="true"></i>{{this.contactPersonEmailAddress}}</a><br>
+                      <a href='tel:{{this.contactPersonPhoneNumber}}'><i class="fa fa-phone" aria-hidden="true"></i>{{this.contactPersonPhoneNumber}}</a><br>
+                    </div>
+                    <div class="responsive">
+                      <a href='mailto:{{this.contactPersonEmailAddress}}'><i class="fa fa-envelope" aria-hidden="true"></i></a><br>
+                      <a href='tel:{{this.contactPersonPhoneNumber}}'><i class="fa fa-phone" aria-hidden="true"></i><br>
+                    </div>
                   </div>
                   <div class='openingHours column'>
                     <p>Adresse:</p>
-                    <p>{{{this.adresse}}}</p>
+                    <p>{{{this.adress}}}</p>
                     <p>Öffnungszeiten:</p>
                     <p>{{{this.openingHours}}}</p>
                   </div>
