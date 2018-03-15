@@ -8,6 +8,14 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+function closeOfferings(){
+    $(".offeringfirst").each(function(){$(this).hide()})
+    $(".offeringsFirst").show().hide()
+    $(".categories").show()
+    $(".close").hide()
+    $(".search > input").val("");
+}
+
 var found = false;
 
 $(".language").each(function(){
@@ -23,10 +31,23 @@ if(!found){
     $(".language:contains(de)").addClass("highlighted");
 }
 
+$(".close").click(function(){
+    closeOfferings();
+})
+
 $(".offeringfirst").each(function(){$(this).hide()})
+$(".offeringsFirst").hide()
+$(".close").hide()
 
 $(".search > input").keyup(function(){
+    if ($(this).val() == ""){
+        closeOfferings()
+        return   
+    }
     let that = $(this)
+    $(".offeringsFirst").show()
+    $(".categories").hide()
+    $(".close").show()
 
     $(".offeringName").each(function(){
         $(this).text().toLocaleLowerCase().indexOf(that.val().toLocaleLowerCase()) != -1 ? $(this).parent().show() : $(this).parent().hide() 
