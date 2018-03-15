@@ -123,8 +123,20 @@ a:hover {
   border-radius: 7px;
 }
 
-.offeringFirst{
+.close{
+  margin: 0;
+  padding-right: 10px;
+}
+
+.offeringsFirst{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
+}
+
+.offeringFirst{
+  width: 80%;
   margin: 20px;
   padding: 20px;
   -webkit-box-shadow: -9px 11px 42px -15px rgba(0,0,0,0.75);
