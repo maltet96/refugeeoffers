@@ -36,7 +36,7 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
           name: offering.fields.title,
           firstCategories: offering.fields.nd1stCategory,
           secondCategories: offering.fields.nd2ndCategory,
-          /*institution: offering.fields.institution,*/
+          institution: offering.fields.institution,
           description: (offering.fields.description)? offering.fields.description.split(/\n|\s\n/).join("<br>\n") + "<br>" : null,
           picture: offering.fields.picture ? offering.fields.picture.fields.file.url : offering.fields.picture,
           openingHours: offering.fields.openingHours ?moffering.fields.openingHours.replace(";", "<br>") : null,
@@ -145,9 +145,5 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
     console.log(err);
   })
 });
-
-/*client.getContentTypes()
-.then((response) => console.log(response.items))
-.catch(console.error)*/
 
 module.exports = router;
