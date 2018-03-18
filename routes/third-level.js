@@ -37,8 +37,8 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
           firstCategories: offering.fields.nd1stCategory,
           secondCategories: offering.fields.nd2ndCategory,
           institution: offering.fields.institution,
-          picture: offering.fields.picture ? offering.fields.picture.fields.file.url : offering.fields.picture,
           description: (offering.fields.description)? offering.fields.description.split(/\n|\s\n/).join("<br>\n") + "<br>" : null,
+          picture: offering.fields.picture ? offering.fields.picture.fields.file.url : offering.fields.picture,
           openingHours: offering.fields.openingHours ?moffering.fields.openingHours.replace(";", "<br>") : null,
           contactPersonPhoneNumber: offering.fields.contactPersonPhoneNumber,
           contactPersonEmailAddress: offering.fields.contactPersonEmailAddress,
@@ -137,7 +137,7 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
        frontPage:frontPage,
        languages:languages,
        chosenLang: req.query["lang"],
-       referer: req.headers.referer,
+       referer: req.params["firstCategory"],
        color: req.query["color"],
        category: categoryInfos
       });

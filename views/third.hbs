@@ -1,5 +1,5 @@
 {{> head}}
-    <a class="backbutton" href="{{referer}}"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
+    <a class="backbutton" href="/second/{{referer}}?lang={{chosenLang}}&color={{color}}"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
     {{> titleandlang}}
     </div>
     <div class="offerings">
@@ -9,19 +9,29 @@
             {{#each offerings}}
             <div class="offering {{../color}}">
                 <h2 class="offeringName">{{this.name}}</h2>
-                <img class="culturepic" src="{{this.picture}}">
-                <a href='{{this.website}}'><h3>{{this.institution}}</h3></a>
                 <p class="offeringDescription">{{{this.description}}}</p>
                 <hr>
                 <div class='contact'>
-                  <p>{{this.address}}</p>
-                  <p>{{this.contactPerson}}</p>
-                  <a href='mailto:{{this.contactPersonEmailAddress}}'><i class="fa fa-envelope" aria-hidden="true"></i>{{this.contactPersonEmailAddress}}</a><br>
-                  <a href='tel:{{this.contactPersonPhoneNumber}}'><i class="fa fa-phone" aria-hidden="true"></i>{{this.contactPersonPhoneNumber}}</a><br>
-                  <p>{{{this.openingHours}}}</p>
+                  <a class='column culturepic' href='{{this.website}}'><img src="{{this.picture}}"></a>
+                  <div class='mailAndPhone column'>
+                    <div class="desktop">
+                      <a href='mailto:{{this.contactPersonEmailAddress}}'><i class="fa fa-envelope" aria-hidden="true"></i>{{this.contactPersonEmailAddress}}</a><br>
+                      <a href='tel:{{this.contactPersonPhoneNumber}}'><i class="fa fa-phone" aria-hidden="true"></i>{{this.contactPersonPhoneNumber}}</a><br>
+                    </div>
+                    <div class="responsive">
+                      <a href='mailto:{{this.contactPersonEmailAddress}}'><i class="fa fa-envelope" aria-hidden="true"></i></a><br>
+                      <a href='tel:{{this.contactPersonPhoneNumber}}'><i class="fa fa-phone" aria-hidden="true"></i><br>
+                    </div>
+                  </div>
+                  <div class='openingHours column'>
+                    <p>Adresse:</p>
+                    <p>{{{this.adress}}}</p>
+                    <p>Öffnungszeiten:</p>
+                    <p>{{{this.openingHours}}}</p>
+                  </div>
                 </div>
                 <hr class='end'>
-             </div>
+            </div>
          {{/each}}
     </div>
 {{> foot}}
