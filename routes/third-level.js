@@ -137,7 +137,7 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
        frontPage:frontPage,
        languages:languages,
        chosenLang: req.query["lang"],
-       referer: req.headers.referer,
+       referer: req.params["firstCategory"],
        color: req.query["color"],
        category: categoryInfos
       });
