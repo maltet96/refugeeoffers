@@ -111,7 +111,7 @@ router.get('/:firstCategory', function(req, res, next) {
       frontPage: frontPage,
       chosenLang: req.query["lang"],
       imprint: imprint,
-      color: "color" + req.query["color"],
+      color: req.query["color"],
       category: categoryInfos
     });
   })
