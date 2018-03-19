@@ -13,10 +13,6 @@
                 <hr>
                 <div class='contact'>
                   <a class='column culturepic' href='{{this.website}}'><img src="{{this.picture}}"></a>
-                  <!--<div class="adresseAndPerson">
-                    <p>{{this.address}}</p>
-                    <p>{{this.contactPerson}}</p>
-                  </div>-->
                   <div class='mailAndPhone column'>
                     <div class="desktop">
                       <a href='mailto:{{this.contactPersonEmailAddress}}'><i class="fa fa-envelope" aria-hidden="true"></i>{{this.contactPersonEmailAddress}}</a><br>
@@ -27,10 +23,10 @@
                       <a href='tel:{{this.contactPersonPhoneNumber}}'><i class="fa fa-phone" aria-hidden="true"></i><br>
                     </div>
                   </div>
-                  <div class='openingHours column'>
-                    <p>Adresse:</p>
-                    <p>{{{this.adress}}}</p>
-                    <p>Öffnungszeiten:</p>
+                  <div class='addressAndOpeningHours column'>
+                    <p><b>Adresse:</b></p>
+                    <p>{{{this.address}}}</p>
+                    <p><b>Öffnungszeiten:</b></p>
                     <p>{{{this.openingHours}}}</p>
                   </div>
                 </div>

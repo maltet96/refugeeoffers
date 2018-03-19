@@ -104,11 +104,11 @@ router.get('/', function(req, res, next) {
           picture: offering.fields.picture ? offering.fields.picture.fields.file.url : offering.fields.picture,
           description: (offering.fields.description)? offering.fields.description.split(/\n|\s\n/).join("<br>\n") + "<br>" : null,
           openingHours: offering.fields.openingHours ? offering.fields.openingHours.replace(";", "<br>") : null,
+          address: offering.fields.address,
           contactPersonPhoneNumber: offering.fields.contactPersonPhoneNumber,
           contactPersonEmailAddress: offering.fields.contactPersonEmailAddress,
           website: offering.fields.website,
-          contactPerson: offering.fields.ansprechpartner,
-          address: offering.fields.adresse
+          contactPerson: offering.fields.ansprechpartner
         }
       }
       catch(error){

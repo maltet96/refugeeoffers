@@ -36,15 +36,15 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
           name: offering.fields.title,
           firstCategories: offering.fields.nd1stCategory,
           secondCategories: offering.fields.nd2ndCategory,
-          /*institution: offering.fields.institution,*/
-          description: (offering.fields.description)? offering.fields.description.split(/\n|\s\n/).join("<br>\n") + "<br>" : null,
+          institution: offering.fields.institution,
           picture: offering.fields.picture ? offering.fields.picture.fields.file.url : offering.fields.picture,
-          openingHours: offering.fields.openingHours ?moffering.fields.openingHours.replace(";", "<br>") : null,
+          description: (offering.fields.description)? offering.fields.description.split(/\n|\s\n/).join("<br>\n") + "<br>" : null,
+          openingHours: offering.fields.openingHours ? offering.fields.openingHours.replace(";", "<br>") : null,
+          address: offering.fields.address,
           contactPersonPhoneNumber: offering.fields.contactPersonPhoneNumber,
           contactPersonEmailAddress: offering.fields.contactPersonEmailAddress,
           website: offering.fields.website,
-          contactPerson: offering.fields.ansprechpartner,
-          address: offering.fields.adresse
+          contactPerson: offering.fields.ansprechpartner
         }
       }
       catch(error){
@@ -145,9 +145,5 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
     console.log(err);
   })
 });
-
-/*client.getContentTypes()
-.then((response) => console.log(response.items))
-.catch(console.error)*/
 
 module.exports = router;
