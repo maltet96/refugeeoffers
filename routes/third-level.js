@@ -39,7 +39,7 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
           institution: offering.fields.institution,
           description: (offering.fields.description)? offering.fields.description.split(/\n|\s\n/).join("<br>\n") + "<br>" : null,
           picture: offering.fields.picture ? offering.fields.picture.fields.file.url : offering.fields.picture,
-          openingHours: offering.fields.openingHours ?moffering.fields.openingHours.replace(";", "<br>") : null,
+          openingHours: offering.fields.openingHours ? offering.fields.openingHours.replace(";", "<br>") : null,
           contactPersonPhoneNumber: offering.fields.contactPersonPhoneNumber,
           contactPersonEmailAddress: offering.fields.contactPersonEmailAddress,
           website: offering.fields.website,
