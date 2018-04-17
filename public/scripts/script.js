@@ -42,15 +42,15 @@ $(".close").hide()
 $(".search > input").keyup(function(){
     if ($(this).val() == ""){
         closeOfferings()
-        return   
+        return
     }
     let that = $(this)
     $(".offeringsFirst").show()
     $(".categories").hide()
     $(".close").show()
 
-    $(".offeringName").each(function(){
-        $(this).text().toLocaleLowerCase().indexOf(that.val().toLocaleLowerCase()) != -1 ? $(this).parent().show() : $(this).parent().hide() 
+    $(".searchParameter").each(function(){
+        $(this).text().toLocaleLowerCase().indexOf(that.val().toLocaleLowerCase()) != -1 ? $(this).parent().show() : $(this).parent().hide()
     })
 })
 
