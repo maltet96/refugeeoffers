@@ -67,6 +67,21 @@ $(".culturepic").each(function(){
     }
 })
 
+var lang = getParameterByName("lang");
+
+if (lang == "en"){
+    $(".address").text("Address:")
+    $(".opening").text("Opening hours:")
+}
+if (lang == "ar"){
+    $(".address").text("عنوان:")
+    $(".opening").text("مواعيد العمل:")
+}
+if (lang == "so"){
+    $(".address").text("Cinwaan:")
+    $(".opening").text("Wakhti lafuro:")
+}
+
 // color offerings in an alternating fashion
 var colors = ["rgba(157, 57, 57, 0.6)", "rgba(221, 136, 56, 0.6)", "rgba(69, 144, 173, 0.6)"]
 

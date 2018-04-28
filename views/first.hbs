@@ -13,9 +13,9 @@
     <div class="offeringsFirst offerings">
             {{#each offerings}}
             <div class="offering {{../color}}">
-                <h2 class="offeringName earchParameter">{{this.name}}</h2>
-                <p class="offeringDescription earchParameter">{{{this.description}}}</p>
-                <p class="institution earchParameter">{{{this.institution}}}</p>
+                <h2 class="offeringName">{{this.name}}</h2>
+                <p class="offeringDescription">{{{this.description}}}</p>
+                <p class="searchParameter">{{{this.description}}} {{this.institution}} {{this.name}} {{this.contactPersonEmailAddress}}</p>
                 <hr>
                 <div class='contact'>
                   <a class='column culturepic' href='{{this.website}}'><img src="{{this.picture}}"></a>
@@ -24,16 +24,16 @@
                       <a href='mailto:{{this.contactPersonEmailAddress}}'><i class="fa fa-envelope" aria-hidden="true"></i>{{this.contactPersonEmailAddress}}</a><br>
                       <a href='tel:{{this.contactPersonPhoneNumber}}'><i class="fa fa-phone" aria-hidden="true"></i>{{this.contactPersonPhoneNumber}}</a><br>
                     </div>
-                    <div class="responsive">
+                    <div class="responsive ">
                       <a href='mailto:{{this.contactPersonEmailAddress}}'><i class="fa fa-envelope" aria-hidden="true"></i></a><br>
-                      <a href='tel:{{this.contactPersonPhoneNumber}}'><i class="fa fa-phone" aria-hidden="true"></i><br>
+                      <a href='tel:{{this.contactPersonPhoneNumber}}'><i class="fa fa-phone" aria-hidden="true"></a></i><br>
                     </div>
                   </div>
                   <div class='openingHours column'>
-                    <p><b>Adresse:</b></p>
-                    <p>{{{this.address}}}</p>
-                    <p><b>Öffnungszeiten:</b></p>
-                    <p>{{{this.openingHours}}}</p>
+                    <p class="address">Adresse:</p>
+                    <p class="centered">{{{this.address}}}</p>
+                    <p class="opening">Öffnungszeiten:</p>
+                    <p class="centered">{{{this.openingHours}}}</p>
                   </div>
                 </div>
                 <hr class='end'>
