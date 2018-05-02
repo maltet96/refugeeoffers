@@ -115,10 +115,10 @@ router.get('/', function(req, res, next) {
     })
 
     let imprint = entriesFilteredForImprint.map((imprint) => {
-      return {
-        content: imprint.fields.content,
-        title: imprint.fields.title
-      }
+        return {
+            content: imprint.fields.content,
+            title: imprint.fields.titlte
+          }
     })[0]
 
     // filter the offerings  out of all entries fetched
