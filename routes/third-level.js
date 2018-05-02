@@ -11,6 +11,38 @@ const client = contentful.createClient({
   accessToken: ACCESS_TOKEN
 })
 
+const chosenLangDict = {
+    "de-DE": 0,
+    "en": 1,
+    "ar": 2,
+    "so": 3,
+}
+
+const langDict = {
+    "mittagessen": ["Mittagessen", "Lunch", "غداء", "Qadada"],
+    "täglich": ["täglich", "every day", "يوميا", "maalin kasta"],
+    "kleiderkammer": ["Kleiderkammer", "Free clothes", "الملابس المجانية", "dhar la'aan"],
+    "immer": ["Immer", "Always", "had iyo jeer", "دائما"],
+    "siehe": ["Siehe", "See", "Arki", "شاهد"],
+    "beschreibung": ["Beschreibung", "description", "Afkaarboorka", "وصف"],
+    "und": ["und", "and", "iyo", "و"],
+    "website": ["Website", "website", "bogga", "موقع الكتروني"],
+    "uhr": ["Uhr", "h", "ساعة", "Daawato"],
+    "mo": ["Mo", "Mon", "الأثنين", "Isniin"],
+    "di": ["Di", "Tue", "الثلاثاء", "Talada"],
+    "mi": ["Mi", "Wed", "الأربعا", "Arbaco"],
+    "do": ["Do", "Thu", "الخميس", "Khamiis"],
+    "fr": ["Fr", "Fri", "الجمعة", "Jimce"],
+    "sa": ["Sa", "Sat", "السبت", "Sabti"],
+    "so": ["So", "Sun", "الأحد", "Axad"],
+    "nach": ["Nach", "On", "بعد", "By"],
+    "vereinbarung": ["Vereinbarung", "appointment", "الاتفاق", "heshiiska"],
+    "bis": ["bis", "to", "إلى", "si ay u"],
+    ";": ["<br>", "<br>", "<br>", "<br>"],
+}
+
+// var re = new RegExp(Object.keys(openingHoursDict).join("|"),"gi");
+
 router.get('/:firstCategory/:secondCategory', function(req, res, next) {
 
   // get all first level categories
@@ -39,12 +71,14 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
           institution: offering.fields.institution,
           description: (offering.fields.description)? offering.fields.description.split(/\n|\s\n/).join("<br>\n") + "<br>" : null,
           picture: offering.fields.picture ? offering.fields.picture.fields.file.url : offering.fields.picture,
-          openingHours: offering.fields.openingHours ? offering.fields.openingHours.replace(";", "<br>") : null,
+          openingHours: offering.fields.openingHours ? offering.fields.openingHours.replace(new RegExp(Object.keys(langDict).join("\\b|\\b"),"gi"), function(matched){
+            return langDict[matched.toLowerCase()][chosenLangDict[req.query["lang"]]]}) : null,
           contactPersonPhoneNumber: offering.fields.contactPersonPhoneNumber,
           contactPersonEmailAddress: offering.fields.contactPersonEmailAddress,
           website: offering.fields.website,
           contactPerson: offering.fields.ansprechpartner,
-          address: offering.fields.adresse
+          address: offering.fields.address ? offering.fields.address.replace(new RegExp(",", "g"), "<br>").replace(new RegExp(Object.keys(langDict).join("\\b|\\b"),"gi"), function(matched){
+            return langDict[matched.toLowerCase()][chosenLangDict[req.query["lang"]]]}) : null,
         }
       }
       catch(error){
