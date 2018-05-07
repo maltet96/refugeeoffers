@@ -413,6 +413,7 @@ a:hover {
   .culturepic {
     width: 100%;
     border: none;
+    margin-bottom: 30px;
   }
 
   .column {
@@ -486,6 +487,16 @@ a:hover {
   }
 
   .offeringDescription {
+    font-size: 1em;
+  }
+
+  .responsive {
+    margin: 100px 0;
+  }
+
+  .openingHours {
+    width: 180px;
+    max-height: 200px;
     font-size: 1em;
   }
 

@@ -38,10 +38,7 @@ const langDict = {
     "nach": ["Nach", "On", "بعد", "By"],
     "vereinbarung": ["Vereinbarung", "appointment", "الاتفاق", "heshiiska"],
     "bis": ["bis", "to", "إلى", "si ay u"],
-    ";": ["<br>", "<br>", "<br>", "<br>"],
 }
-
-// var re = new RegExp(Object.keys(openingHoursDict).join("|"),"gi");
 
 router.get('/:firstCategory/:secondCategory', function(req, res, next) {
 
@@ -71,8 +68,8 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
           institution: offering.fields.institution,
           description: (offering.fields.description)? offering.fields.description.split(/\n|\s\n/).join("<br>\n") + "<br>" : null,
           picture: offering.fields.picture ? offering.fields.picture.fields.file.url : offering.fields.picture,
-          openingHours: offering.fields.openingHours ? offering.fields.openingHours.replace(new RegExp(Object.keys(langDict).join("\\b|\\b"),"gi"), function(matched){
-            return langDict[matched.toLowerCase()][chosenLangDict[req.query["lang"]]]}) : null,
+          openingHours: offering.fields.openingHours ? req.query["lang"] ? offering.fields.openingHours.replace(new RegExp(Object.keys(langDict).join("\\b|\\b"),"gi"), function(matched){
+            return langDict[matched.toLowerCase()][chosenLangDict[req.query["lang"]]]}).replace(new RegExp(";", "g"), "<br>") : offering.fields.openingHours.replace(new RegExp(";", "g"), "<br>") : null ,
           contactPersonPhoneNumber: offering.fields.contactPersonPhoneNumber,
           contactPersonEmailAddress: offering.fields.contactPersonEmailAddress,
           website: offering.fields.website,
