@@ -5,6 +5,7 @@
     <div class="levelheadingcontainer">
       <h2 class="levelheading {{color}}">{{{category.icon}}}{{category.title}}</h2>
       <p class='description'>{{category.categoryDescription}}</p>
+      <a href ="{{category.importantDocuments.fields.file.url}}"><p class="description">{{category.documentDescription}}</p></a>
     </div>
     <div class="categories">
       {{#each categories}}
