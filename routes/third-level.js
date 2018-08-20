@@ -158,7 +158,7 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
     let imprint = entriesFilteredForImprint.map((imprint) => {
       return {
         content: imprint.fields.content,
-        title: imprint.fields.titlte
+        title: imprint.fields.title
       }
     })[0]
 
