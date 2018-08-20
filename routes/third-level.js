@@ -74,8 +74,7 @@ router.get('/:firstCategory/:secondCategory', function(req, res, next) {
           contactPersonEmailAddress: offering.fields.contactPersonEmailAddress,
           website: offering.fields.website,
           contactPerson: offering.fields.ansprechpartner,
-          address: offering.fields.address ? offering.fields.address.replace(new RegExp(",", "g"), "<br>").replace(new RegExp(Object.keys(langDict).join("\\b|\\b"),"gi"), function(matched){
-            return langDict[matched.toLowerCase()][chosenLangDict[req.query["lang"]]]}) : null,
+          address: offering.fields.address ? offering.fields.address.replace(new RegExp(",", "g"), "<br>") : null,
         }
       }
       catch(error){
