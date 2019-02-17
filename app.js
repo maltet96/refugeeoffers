@@ -29,7 +29,7 @@ app.engine('hbs', hbs({
 
 app.set('view engine', 'hbs');
 
-app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
+// app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist/'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
